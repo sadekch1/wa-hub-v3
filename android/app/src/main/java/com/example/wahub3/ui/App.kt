@@ -244,7 +244,7 @@ fun MainScreen() {
             androidx.compose.animation.AnimatedContent(
                 targetState = tab,
                 transitionSpec = {
-                    androidx.compose.animation.fadeIn().togetherWith(androidx.compose.animation.fadeOut())
+                    androidx.compose.animation.fadeIn() togetherWith androidx.compose.animation.fadeOut()
                 },
                 label = "tab"
             ) { t ->
