@@ -1,0 +1,15 @@
+node_modules/
+dist/
+release/
+*.log
+.gradle/
+build/
+!desktop/build/
+local.properties
+desktop/vendor/mpv/*
+!desktop/vendor/mpv/.keep
+android/app/libnode/
+android/app/.cxx/
+android/app/src/main/assets/nodejs/main.js
+android/node_tmp/
+android/node.zip

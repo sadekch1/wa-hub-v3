@@ -1,0 +1,73 @@
+{
+  "name": "wa-hub-3",
+  "productName": "WA Hub 3",
+  "version": "1.0.0",
+  "description": "WA Hub 3 — مشاهدة وتحميل (Windows & Linux)",
+  "main": "src/main.js",
+  "private": true,
+  "scripts": {
+    "build:host": "node scripts/build-host.js",
+    "start": "npm run build:host && electron .",
+    "web": "npm run build:host && node src/server.js",
+    "dist:win": "npm run build:host && electron-builder --win portable --x64 --publish never",
+    "dist:linux": "npm run build:host && electron-builder --linux AppImage tar.gz --x64 --publish never"
+  },
+  "devDependencies": {
+    "@whiskeysockets/baileys": "7.0.0-rc14",
+    "pino": "^9.6.0",
+    "esbuild": "^0.23.1",
+    "electron": "^31.7.7",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.example.wahub3",
+    "productName": "WA Hub 3",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "package.json",
+      "src/main.js",
+      "src/preload.js",
+      "build/icon.png",
+      "renderer/**/*",
+      "dist/host.js"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.png"
+    },
+    "portable": {
+      "artifactName": "WA-Hub-3-${version}-portable.${ext}"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "tar.gz"
+      ],
+      "category": "Network",
+      "icon": "build/icon.png",
+      "artifactName": "WA-Hub-3-${version}.${ext}",
+      "executableArgs": [
+        "--no-sandbox"
+      ]
+    },
+    "extraResources": [
+      {
+        "from": "vendor/mpv",
+        "to": "mpv",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ]
+  },
+  "author": "WA Hub 3"
+}
